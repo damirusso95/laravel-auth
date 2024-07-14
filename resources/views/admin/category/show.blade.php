@@ -8,6 +8,7 @@
         <p> {{ $categoria->name }}</p>
         <p> {{ $categoria->icon }}</p>
         <p> {{ $categoria->description }}</p>
+        <a href="{{ route('admin.categories.index', $categoria->id) }}" class="btn btn-primary">torna alla lista delle categorie</a>
 
 
 

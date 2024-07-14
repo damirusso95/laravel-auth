@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Categories</h1>
         <ul>
-            @foreach($categorie as $categoria)
+            @foreach($categoria as $categoria)
                 <li>
                     <a href="{{ route('admin.categories.show', $categoria->id) }}">
                         {{ $categoria->name }}
