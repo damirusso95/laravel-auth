@@ -1,11 +1,18 @@
-@extends('layouts.admin')
+<!-- resources/views/admin/category/index.blade.php -->
+
+@extends('layouts.app')
+
 @section('content')
-    <h1>categorie</h1>
-    <ul>
-        @foreach ($categorie as $caategoria)
-            <li><a href="{{route("admin.categories.show" $categoria)}}"></a>
-                <h2>{{ $categoria->name }}</h2>
-            </li>
-        @endforeach
-    </ul>
+    <div class="container">
+        <h1>Categories</h1>
+        <ul>
+            @foreach($categorie as $categoria)
+                <li>
+                    <a href="{{ route('admin.categories.show', $categoria->id) }}">
+                        {{ $categoria->name }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
 @endsection

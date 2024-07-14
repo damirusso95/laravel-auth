@@ -1,6 +1,15 @@
-@extends(layouts . admin)
+<!-- resources/views/admin/category/show.blade.php -->
 
-@section
-<h1>{{ categoria->name }}</h1>
-<i class="{{ $categoria->icon }}"></i>
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <h1>Category Details</h1>
+        <p> {{ $categoria->name }}</p>
+        <p> {{ $categoria->icon }}</p>
+        <p> {{ $categoria->description }}</p>
+
+
+
+    </div>
 @endsection

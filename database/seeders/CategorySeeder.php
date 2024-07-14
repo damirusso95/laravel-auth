@@ -17,21 +17,25 @@ class CategorySeeder extends Seeder
     {
         $CatJS = new Category();
         $CatJS->name = "JavaScript";
+        $CatJS->description = "Descrizione";
         $CatJS->icon = "fa-brands fa-js";
         $CatJS->save();
 
         $CatVue = new Category();
         $CatVue->name = "VueJS";
+        $CatVue->description = "Descrizione";
         $CatVue->icon = "fa-brands fa-vuejs";
         $CatVue->save();
 
         $CatPHP = new Category();
         $CatPHP->name = "PHP";
+        $CatPHP->description = "Descrizione";
         $CatPHP->icon = "fa-brands fa-php";
         $CatPHP->save();
 
         $CatLaravel = new Category();
         $CatLaravel->name = "Laravel";
+        $CatLaravel->description = "Descrizione";
         $CatLaravel->icon = "fa-brands fa-laravel";
         $CatLaravel->save();
     }

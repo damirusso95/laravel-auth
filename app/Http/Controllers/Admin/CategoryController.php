@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -16,10 +15,10 @@ class CategoryController extends Controller
         $categories = Category::all();
 
         $data = [
-            "categorie" => $categories
+            "categoria" => $categories
         ];
 
-        return view("admin.categoris.index", $data);
+        return view("admin.category.index", $data); 
     }
 
     /**
@@ -44,10 +43,10 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $data = [
-            "categorie" => $category
+            "categoria" => $category
         ];
 
-        return view("admin.categoris.show", $data);
+        return view("admin.category.show", $data); // Modifica il percorso qui
     }
 
     /**
@@ -74,3 +73,4 @@ class CategoryController extends Controller
         //
     }
 }
+
