@@ -20,7 +20,7 @@ Route::middleware(['auth'])
         // Rotte per Boolfolios con il metodo resource
         Route::resource('boolfolios', BoolfolioController::class)->only(['create', 'index']);
         Route::resource("categories", CategoryController::class);
-        Route::resource('admin/types', TypeController::class);
+        Route::resource('types', TypeController::class);
     });
 
 // Rotta di benvenuto pubblica
