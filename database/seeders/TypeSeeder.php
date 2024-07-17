@@ -12,15 +12,31 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = [
-            ['nome' => 'Front-end', 'descrizione' => 'Front-end development', 'icona' => 'fa-frontend'],
-            ['nome' => 'Back-end', 'descrizione' => 'Back-end development', 'icona' => 'fa-backend'],
-            ['nome' => 'Full stack', 'descrizione' => 'Full stack development', 'icona' => 'fa-fullstack'],
-            ['nome' => 'Design', 'descrizione' => 'Design', 'icona' => 'fa-design'],
-        ];
+        $typesFront = new Type();
+        $typesFront->nome = "Front-end";
+        $typesFront->descrizione = "Front-end development";
+        $typesFront->icona = "fa-frontend";
+        $typesFront->save();
 
-        foreach ($types as $type) {
-            Type::create($type);
-        }
+        $typesBack = new Type();
+        $typesBack->nome = "Back-end";
+        $typesBack->descrizione = "Back-end development";
+        $typesBack->icona = "fa-Backend";
+        $typesBack->save();
+
+        $typesFull = new Type();
+        $typesFull->nome = "Full stack";
+        $typesFull->descrizione = "Full stack development";
+        $typesFull->icona = "fa-fullstack";
+        $typesFull->save();
+
+        $typesDes = new Type();
+        $typesDes->nome = "Design";
+        $typesDes->descrizione = "Design";
+        $typesDes->icona = "fa-design";
+        $typesDes->save();
+
     }
-}
+      
+  }
+
