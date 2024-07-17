@@ -18,7 +18,7 @@ Route::middleware(['auth'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         // Rotte per Boolfolios con il metodo resource
-        Route::resource('boolfolios', BoolfolioController::class)->only(['create', 'index']);
+        Route::resource('boolfolios', BoolfolioController::class)->only(['index', 'create', 'store','show', 'edit', 'update', 'destroy']);
         Route::resource("categories", CategoryController::class);
         Route::resource('types', TypeController::class);
     });

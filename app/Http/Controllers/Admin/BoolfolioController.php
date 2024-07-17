@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Boolfolio;
 use Illuminate\Http\Request;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class BoolfolioController extends Controller
 {
@@ -15,9 +13,7 @@ class BoolfolioController extends Controller
      */
     public function index()
     {
-
         $boolfolios = Boolfolio::all();
-
         return view('admin.boolfolios.index', compact('boolfolios'));
     }
 
@@ -34,52 +30,63 @@ class BoolfolioController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $request->validate([
+            'autore' => 'required',
+            'nome' => 'required',
+            'descrizione' => 'nullable',
+            'inizio' => 'required|date',
+            'fine' => 'required|date'
+        ]);
 
-        $newproject = new Boolfolio();
-        $newproject->nome = $data["nome"];
-        $newproject->autore = $data["autore"];
-        $newproject->inizio = $data["inizio"];
-        $newproject->fine = $data["fine"];
-        $newproject->descrizione = $data["descrizione"];
-        $newproject->save();
+        $newBoolfolio = Boolfolio::create($request->all());
 
-        return redirect()->route("admin.show", $newproject->id);
+        return redirect()->route('admin.boolfolios.show', $newBoolfolio->id)
+            ->with('success', 'Boolfolio creato con successo.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Boolfolio $boolfolio)
     {
-        $project = project::find($id);
-        $data = [
-            "Comic" => $project
-        ];
-        return view('boolfolios.show', $data);
+        return view('admin.boolfolios.show', compact('boolfolio'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(Boolfolio $boolfolio)
     {
-        return view('boolfolios.edit');
+        return view('admin.boolfolios.edit', compact('boolfolio'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, boolfolio $boolfolio)
+    public function update(Request $request, Boolfolio $boolfolio)
     {
-        //
+        $request->validate([
+            'autore' => 'required',
+            'nome' => 'required',
+            'descrizione' => 'nullable',
+            'inizio' => 'required|date',
+            'fine' => 'required|date'
+        ]);
+
+        $boolfolio->update($request->all());
+
+        return redirect()->route('admin.boolfolios.index')
+            ->with('success', 'Boolfolio aggiornato con successo.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(boolfolio $boolfolio)
+    public function destroy(Boolfolio $boolfolio)
     {
-        //
+        $boolfolio->delete();
+
+        return redirect()->route('admin.boolfolios.index')
+            ->with('success', 'Boolfolio eliminato con successo.');
     }
 }
