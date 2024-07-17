@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BoolfolioController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TypeController;
+
 
 // Rotte protette dall'autenticazione e con prefisso 'admin'
 Route::middleware(['auth'])
@@ -28,3 +30,4 @@ Route::middleware(['auth'])->get('/', function () {
 
 // Rotte di autenticazione generate da Laravel
 require __DIR__ . '/auth.php';
+
