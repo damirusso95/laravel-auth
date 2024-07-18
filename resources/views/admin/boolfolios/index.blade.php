@@ -16,6 +16,8 @@
                     <p class="card-text"><strong>Inizio:</strong> {{ $boolfolio->inizio }}</p>
                     <p class="card-text"><strong>Fine:</strong> {{ $boolfolio->fine }}</p>
                     <a href="{{ route('admin.boolfolios.edit', $boolfolio->id) }}" class="btn btn-warning">Modifica</a>
+                    <a href="{{ route('admin.boolfolios.show', $boolfolio->id) }}" class="btn btn-primary">Mostra</a>
+
 
                     <form action="{{ route('admin.boolfolios.destroy', $boolfolio->id) }}" method="POST" class="d-inline">
                         @csrf
