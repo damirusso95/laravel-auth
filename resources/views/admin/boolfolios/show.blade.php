@@ -16,6 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ $boolfolio->nome }}</h5>
+                <p class="card-text"><strong>Categoria:</strong> {{ $boolfolio->category_id }}</p>               
                 <p class="card-text"><strong>Autore:</strong> {{ $boolfolio->autore }}</p>
                 <p class="card-text"><strong>Descrizione:</strong> {{ $boolfolio->descrizione }}</p>
                 <p class="card-text"><strong>Data di inizio:</strong> {{ $boolfolio->inizio }}</p>

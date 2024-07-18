@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('descrizione');
             $table->date('inizio');
             $table->date('fine');
+            $table->foreignId('category_id')->constrained();
+
             $table->timestamps();
         });
     }
