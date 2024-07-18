@@ -13,4 +13,9 @@ class Category extends Model
         "description",
         "icon"
     ];
+
+    public function boolfolios()
+    {
+        return $this->hasMany(Boolfolio::class);
+    }
 }
