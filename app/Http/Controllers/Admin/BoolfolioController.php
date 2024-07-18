@@ -33,9 +33,11 @@ class BoolfolioController extends Controller
         $request->validate([
             'autore' => 'required',
             'nome' => 'required',
+            'cover_image' => 'nullable',
             'descrizione' => 'nullable',
             'inizio' => 'required|date',
-            'fine' => 'required|date'
+            'fine' => 'required|date',
+            
         ]);
 
         $newBoolfolio = Boolfolio::create($request->all());

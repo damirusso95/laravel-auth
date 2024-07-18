@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('autore');
             $table->string('nome');
+            $table->string('cover_image')->nullable();
+
             $table->text('descrizione');
             $table->date('inizio');
             $table->date('fine');

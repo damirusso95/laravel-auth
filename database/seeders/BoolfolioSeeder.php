@@ -20,6 +20,8 @@ class BoolfolioSeeder extends Seeder
             $newBoolfolio = new Boolfolio();
             $newBoolfolio->autore = $faker->sentence(2);
             $newBoolfolio->nome = $faker->sentence(2);
+            $newBoolfolio->cover_image = $faker->imageUrl(400,300, 'boolfolios',true, gray:true, format:'jpg');
+
             $newBoolfolio->descrizione = $faker->paragraph(3);
             $newBoolfolio->inizio = $faker->date();
             $newBoolfolio->fine = $faker->date();
