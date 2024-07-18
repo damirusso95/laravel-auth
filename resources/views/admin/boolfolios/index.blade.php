@@ -15,6 +15,12 @@
                     <p class="card-text"><strong>Descrizione:</strong> {{ $boolfolio->descrizione }}</p>
                     <p class="card-text"><strong>Inizio:</strong> {{ $boolfolio->inizio }}</p>
                     <p class="card-text"><strong>Fine:</strong> {{ $boolfolio->fine }}</p>
+                    <a href="{{ route('admin.boolfolios.edit', $boolfolio->id) }}" class="btn btn-warning">Modifica</a>
+                    <form action="{{ route('admin.boolfolios.destroy', $boolfolio->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare questo progetto?')">Elimina</button>
+                    </form>
                 </div>
             </div>
         </div>
