@@ -47,8 +47,10 @@ class BoolfolioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Boolfolio $boolfolio)
+    public function show(string $id)
     {
+        $boolfolio = Boolfolio::find($id);
+
         return view('admin.boolfolios.show', compact('boolfolio'));
     }
 

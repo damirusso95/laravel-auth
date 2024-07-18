@@ -46,7 +46,7 @@ class CategoryController extends Controller
             "categoria" => $category
         ];
 
-        return view("admin.category.show", $data); // Modifica il percorso qui
+        return view("admin.category.show", $data); 
     }
 
     /**
