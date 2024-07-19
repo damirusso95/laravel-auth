@@ -1,4 +1,4 @@
-<!-- resources/views/boolfolios/index.blade.php -->
+
 
 @extends('layouts.app')
 
