@@ -12,7 +12,13 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $boolfolio->nome }}</h5>
                     <p class="card-text"><strong>Autore:</strong> {{ $boolfolio->autore }}</p>
-                    <p class="card-text"><strong>immagine:</strong> {{ $boolfolio->cover_image }}</p>
+                    @if (Str::startsWith($boolfolio->cover_image, 'http'))
+                        <img  src="{{ $boolfolio->cover_image }}" alt="" class="card-text card-img-top">                              
+                    @else
+                        <img  src="{{ asset('storage/' . $boolfolio->cover_image) }} " alt="" class="card-text card-img-top">
+
+                    @endif
+                    
                     <p class="card-text"><strong>Descrizione:</strong> {{ $boolfolio->descrizione }}</p>
                     <p class="card-text"><strong>Inizio:</strong> {{ $boolfolio->inizio }}</p>
                     <p class="card-text"><strong>Fine:</strong> {{ $boolfolio->fine }}</p>

@@ -7,6 +7,9 @@ use App\Models\Boolfolio;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+
 
 class BoolfolioController extends Controller
 {
@@ -84,7 +87,8 @@ class BoolfolioController extends Controller
      */
     public function edit(Boolfolio $boolfolio)
     {
-        return view('admin.boolfolios.edit', compact('boolfolio'));
+        $categories = Category::all();
+        return view('admin.boolfolios.edit', compact('boolfolio','categories'));
     }
 
     /**
@@ -92,17 +96,28 @@ class BoolfolioController extends Controller
      */
     public function update(Request $request, Boolfolio $boolfolio)
     {
-        $request->validate([
-            'autore' => 'required',
-            'nome' => 'required',
-            'descrizione' => 'nullable',
+        $data = $request->validate([
+            'autore' => 'required|string|max:255',
+            'nome' => 'required|string|max:255',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'descrizione' => 'nullable|string',
             'inizio' => 'required|date',
             'fine' => 'required|date',
-            'category_id' => 'nullable|exists:categories,id',
-            'cover_image' => 'nullable|image',
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
-        $boolfolio->update($request->all());
+        if($request->has('cover_image')){
+            // salva immagine
+            $image_path = storage::put('uploads', $request->cover_image);
+            $data['cover_image'] = $image_path;
+
+        if($boolfolio->cover_image && !Str::start($boolfolio->cover_image, 'http')){
+
+            Storage::delete($boolfolio->cover_image);
+        }
+        }
+    
+        $boolfolio->update($data);
 
         return redirect()->route('admin.boolfolios.index')
             ->with('success', 'Boolfolio aggiornato con successo.');
@@ -113,7 +128,13 @@ class BoolfolioController extends Controller
      */
     public function destroy(Boolfolio $boolfolio)
     {
-        $boolfolio->delete();
+         // Elimina l'immagine associata se esiste
+    if ($boolfolio->cover_image) {
+        Storage::disk('public')->delete($boolfolio->cover_image);
+    }
+
+    // Elimina il progetto
+    $boolfolio->delete();
 
         return redirect()->route('admin.boolfolios.index')
             ->with('success', 'Boolfolio eliminato con successo.');
