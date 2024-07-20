@@ -33,21 +33,40 @@ class BoolfolioController extends Controller
      */
     public function store(Request $request)
     {
+        // Validazione dei dati
+    $data = $request->validate([
+        'autore' => 'required|string|max:255',
+        'nome' => 'required|string|max:255',
+        'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'descrizione' => 'nullable|string',
+        'inizio' => 'required|date',
+        'fine' => 'required|date',
+        'category_id' => 'nullable|exists:categories,id'
+    ]);
 
-        $data = $request->all();
+        // $data = $request->all();
+        // $newProject = new Boolfolio();
+        // $newProject->autore = $data['autore'];
+        // $newProject->nome = $data['nome'];
+        // $newProject->cover_image = $data['cover_image'];
+        // $newProject->descrizione = $data['descrizione'];
+        // $newProject->inizio = $data['inizio'];
+        // $newProject->fine = $data['fine'];
+        // $newProject->category_id = $data['category_id'];     
+        // $newProject-> save();
 
-        $newProject = new Boolfolio();
-        $newProject->autore = $data['autore'];
-        $newProject->nome = $data['nome'];
-        $newProject->cover_image = $data['cover_image'];
-        $newProject->descrizione = $data['descrizione'];
-        $newProject->inizio = $data['inizio'];
-        $newProject->fine = $data['fine'];
-        $newProject->category_id = $data['category_id'];     
-        $newProject-> save();
+        
+        if($request->has('cover_image')){
+            // salva immagine
+            $image_path = storage::put('uploads', $request->cover_image);
+            $data['cover_image'] = $image_path;
+        }
+       
+            // Creazione del nuovo progetto
+            $newProject = Boolfolio::create($data);
 
 
-        return redirect()->route('admin.boolfolios.show', $newProject->id);
+            return redirect()->route('admin.boolfolios.show', $newProject->id);
     }
 
     /**

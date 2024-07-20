@@ -13,7 +13,6 @@
                     <h5 class="card-title">{{ $boolfolio->nome }}</h5>
                     <p class="card-text"><strong>Autore:</strong> {{ $boolfolio->autore }}</p>
                     <p class="card-text"><strong>immagine:</strong> {{ $boolfolio->cover_image }}</p>
-
                     <p class="card-text"><strong>Descrizione:</strong> {{ $boolfolio->descrizione }}</p>
                     <p class="card-text"><strong>Inizio:</strong> {{ $boolfolio->inizio }}</p>
                     <p class="card-text"><strong>Fine:</strong> {{ $boolfolio->fine }}</p>

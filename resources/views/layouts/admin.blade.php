@@ -59,6 +59,13 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.boolfolios.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.boolfolios.create') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Crea nuovo progetto
+                                </a>
+                            </li>
+
                             
 
                             <li class="nav-item">
