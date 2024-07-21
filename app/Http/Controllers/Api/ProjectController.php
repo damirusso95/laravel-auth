@@ -12,7 +12,7 @@ class ProjectController extends Controller
 
         return response()->json([
             'success' => true,
-            'projects' => Boolfolio::orderByDesc('id')->paginate()
+            'projects' => Boolfolio::with(['Category'])->orderByDesc('id')->paginate()
         ]);
     }
 }
