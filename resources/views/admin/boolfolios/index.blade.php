@@ -36,5 +36,7 @@
         </div>
         @endforeach
     </div>
+    {{ $boolfolios->links('pagination::bootstrap-5') }}
+
 </div>
 @endsection

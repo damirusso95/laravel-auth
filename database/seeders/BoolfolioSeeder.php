@@ -15,7 +15,7 @@ class BoolfolioSeeder extends Seeder
     {
         
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
 
             $newBoolfolio = new Boolfolio();
             $newBoolfolio->autore = $faker->sentence(2);

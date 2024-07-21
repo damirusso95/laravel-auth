@@ -18,7 +18,8 @@ class BoolfolioController extends Controller
      */
     public function index()
     {
-        $boolfolios = Boolfolio::all();
+        // $boolfolios = Boolfolio::all();
+        $boolfolios = Boolfolio::paginate(9);
         return view('admin.boolfolios.index', compact('boolfolios'));
     }
 
